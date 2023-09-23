@@ -1,0 +1,213 @@
+1.Create an image gallery that holds multiple images 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        /* Style for the image gallery */
+        ul.gallery {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* Adjust the gap between images */
+        }
+
+        /* Style for individual images */
+        ul.gallery li {
+            flex: 1;
+        }
+
+        ul.gallery img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Gallery</h1>
+
+    <!-- The image gallery container as an unordered list -->
+    <ul class="gallery">
+        <!-- Image 1 -->
+        <li>
+            <img src="images/pexels-christina-morillo-1181703.jpg" alt="Image 1">
+        </li>
+
+        <!-- Image 2 -->
+        <li>
+            <img src="images/pexels-danny-meneses-943096.jpg" alt="Image 2">
+        </li>
+
+        <!-- Add more images as needed -->
+        <!-- Image 3 -->
+        <li>
+            <img src="images/pexels-lukas-574073.jpg" alt="Image 3">
+        </li>
+
+        <!-- Image 4 -->
+        <li>
+            <img src="images/pexels-pixabay-270404.jpg" alt="Image 4">
+        </li>
+    </ul>
+</body>
+</html>
+
+2.Use video and audio tags to display video and audio with the playback,audio control
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video and Audio Playback</title>
+</head>
+<body>
+    <h1>Video Playback</h1>
+    <!-- Video with controls -->
+    <video controls width="400">
+        <source src="images/pexels-tima-miroshnichenko-5377684 (2160p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <h1>Audio Playback</h1>
+    <!-- Audio with controls -->
+    <audio controls>
+        <source src="images/mixkit-raising-me-higher-34.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+</body>
+</html>
+
+3.Modify the previous assignment so that the aoudio and video play automatically as the page is loaded and they should play infinitely.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video and Audio Playback</title>
+</head>
+<body>
+    <h1>Video Playback</h1>
+    <!-- Video with controls -->
+    <video controls autoplay loop width="400">
+        <source src="images/pexels-tima-miroshnichenko-5377684 (2160p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <h1>Audio Playback</h1>
+    <!-- Audio with controls -->
+    <audio controls autoplay loop >
+        <source src="images/mixkit-raising-me-higher-34.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+</body>
+</html>
+
+4.Use iframe to embed the physicsWallah Wikipedia page property.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Wallah Wikipedia Page</title>
+</head>
+<body>
+    <h1>Physics Wallah Wikipedia Page</h1>
+    <iframe
+    width="1000"
+    height="1000"
+    src="https://en.wikipedia.org/wiki/Physics_Wallah"
+  >
+  </iframe>
+</body>
+</html>
+
+5.Create a sign-up and sign-in form with proper validation.
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign-Up</title>
+    <script>
+        function validateSignUpForm() {
+            var firstName = document.getElementById("first-name").value;
+            var lastName = document.getElementById("last-name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm-password").value;
+            var age = parseInt(document.getElementById("age").value);
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var agree = document.getElementById("agree").checked;
+
+            if (firstName.length < 3 || lastName.length < 3 || email.length < 8 || password.length < 8 || confirmPassword !== password || age < 0 || age > 150 || !gender || !agree) {
+                alert("Please fill in all fields correctly.");
+                return false;
+            }
+          
+             // Check if terms and conditions are agreed to
+             if (!document.getElementById("terms-and-conditions").checked) {
+                alert("Please agree to the terms and conditions.");
+                return false;
+            }
+        }
+    </script>
+    <script>
+        function validateSignInForm() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            if (email.length < 8 || password.length < 8) {
+                alert("Please fill in all fields correctly.");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Sign-Up</h2>
+    <form action="signup.php" method="POST" onsubmit="return validateSignUpForm()">
+        <label for="first-name">First Name:</label>
+        <input type="text" id="first-name" name="first-name" required><br>
+
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" name="last-name" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" required><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br>
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male"> <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female"> <label for="female">Female</label><br>
+
+        <input type="checkbox" id="agree" name="agree" required>
+        <label for="agree">I agree to the terms and conditions.</label><br>
+
+        <input type="submit" value="Sign Up">
+    </form>
+
+    <h2>Sign-In</h2>
+    <form action="signin.php" method="POST" onsubmit="return validateSignInForm()">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <input type="submit" value="Sign In">
+    </form>
+</body>
+</html>
+
+
